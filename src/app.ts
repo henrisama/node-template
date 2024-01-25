@@ -1,12 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import path from "path";
 import Debug from "debug";
 import logger from "morgan";
-import dotenv from "dotenv";
 import express from "express";
 import cors from "./conf/cors.conf";
 import routes from "./conf/routes.conf";
 import cookieParser from "cookie-parser";
-dotenv.config();
 
 const debug = Debug("app:server");
 const PORT = process.env.PORT || 3333;

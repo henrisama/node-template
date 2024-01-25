@@ -4,9 +4,10 @@ import express, { Request, Response } from "express";
 import IAutoService from "./interfaces/auto.service.interface";
 import IAutoController from "./interfaces/auto.controller.interface";
 import { dtoValidation } from "../../middlewares/dto-validation";
+import * as path from "path";
 
 export const buildController = <T, CreateDto, UpdateDto>(
-  path: string,
+  name: string,
   service: IAutoService<T, CreateDto, UpdateDto>,
   createDto: any,
   updateDto: any
@@ -17,7 +18,7 @@ export const buildController = <T, CreateDto, UpdateDto>(
     autoService: IAutoService<T, CreateDto, UpdateDto>;
 
     constructor() {
-      this.path = path;
+      this.path = path.join("/", name);
       this.router = express.Router();
       this.autoService = service ?? buildService();
     }
